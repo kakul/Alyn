@@ -1,5 +1,0 @@
-Image File: /home/k/Skew_Detect/examples/1.jpg
-Angle bins: [[11.564245810055864, 12.569832402234628], [], [], [-77.932960893854755]]
-Estimated Angle: 12.0670391061
-Average Deviation from pi/4: 32.5055865922
-
