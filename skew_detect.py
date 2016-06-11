@@ -25,6 +25,12 @@ class Skew:
 		self.num_peaks = num_peaks
 		self.plot_hough = plot_hough
 
+	def write_to_file(self, wfile, data):
+		
+		for d in data:
+			wfile.write(d + ': ' + str(data[d])+'\n')
+		wfile.write('\n')
+
 	def get_max_freq_elem(self, arr):
 
 		max_arr = []
@@ -42,7 +48,7 @@ class Skew:
 		for k in sorted_keys:
 			if freqs[k] == max_freq:
 				max_arr.append(k)
-
+		
 		return max_arr
 
 	def display_hough(self, h, a, d):
@@ -88,18 +94,33 @@ class Skew:
 			else:
 				print "Invalid input, nothing to process."
 		else:
-			print self.determine_skew(self.input_file)
+			self.process_single_file()
+
+	def check_path(self, path):
+		
+		if os.path.isabs(path):
+			full_path = path
+		else:
+			full_path = os.getcwd()+'/'+str(path)
+		return full_path
+			
+	def process_single_file(self):
+		
+		file_path = self.check_path(self.input_file) 
+		res = self.determine_skew(file_path)
+
+		if self.output_file:
+			output_path = self.check_path(self.output_file)
+			wfile = open(output_path,'w')
+			self.write_to_file(wfile, res)
+			wfile.close()
 
 	def batch_process(self):
 
 		prefix = os.getcwd()
 		if self.batch_path == '.':
 			self.batch_path = ''
-		if os.path.isabs(self.batch_path):
-			abs_path = self.batch_path
-		else:
-			abs_path = prefix +'/'+ str(self.batch_path)
-		
+		abs_path = self.check_path(self.batch_path)
 		files = os.listdir(abs_path)
 		
 		if os.path.isabs(self.output_file):
@@ -114,8 +135,8 @@ class Skew:
 			if os.path.isdir(file_path):
 				continue
 			if imghdr.what(file_path):
-				skew = self.determine_skew(file_path)
-				wfile.write(f+','+str(skew)+'\n')
+				res = self.determine_skew(file_path)
+				self.write_to_file(wfile, res)
 
 		wfile.close()
 
@@ -186,7 +207,7 @@ class Skew:
 		if self.plot_hough:
 			self.display_hough(h, a, d)
 		print "Approximated Angle:", ans_res, "Image:", img_file		
-		return ans_res
+		return data
 
 if __name__ == '__main__':
 	
@@ -196,12 +217,10 @@ if __name__ == '__main__':
 	parser.add_option('-d', '--display', default = None, dest='display_output', help='Display Logs')
 	parser.add_option('-i', '--input', default = None, dest='input_file', help='Input File Name')
 	parser.add_option('-n', '--peaks', default = 20, dest='num_peaks', help='Number of Hough Transform Peaks' ,type=int)
-	parser.add_option('-o', '--output', default = "output.txt", dest='output_file', help='Output File Name')
+	parser.add_option('-o', '--output', default = None, dest='output_file', help='Output File Name')
 	parser.add_option('-p', '--hough', default = None, dest='plot_hough',help='Plot the Hough Transform')
 	parser.add_option('-s', '--sigma', default = 3.0, dest='sigma', help='Sigma for Canny Edge Detection', type=float)
 	options,args = parser.parse_args()
-	
-	print options.input_file, options.batch_path, options.display_output, options.num_peaks, options.plot_hough, options.sigma, options.input_file
 	
 	skew_obj = Skew(options.input_file, options.batch_path, options.output_file, options.sigma, options.display_output, options.num_peaks, options.plot_hough)
 	skew_obj.run()
