@@ -3,7 +3,7 @@
 ## Skew detection and correction in images containing text
 
 <img src="/examples/4.jpg" width=400px></img>
-<h5>Image with skew</h5><br/>
+<h5>Image with skew</h5>
 <img src="sample_output.jpg" height=300px><
 <h5>Image after deskew</h5>
 ###Requires
