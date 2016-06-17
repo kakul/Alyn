@@ -2,6 +2,14 @@
 
 ## Skew detection and correction in images containing text
 
+######Image with skew:
+
+<img src="/examples/4.jpg" width=400px>
+
+######Image after deskew:
+
+<img src="sample_output.jpg" height=300px>
+
 ###Requires
 
 * `numpy`
@@ -44,44 +52,48 @@ The deskew script uses the skew angle determined using skew detection script to 
 
 To calculate the skew angle for a given image file, use `-i` option followed by the path to file:
 
-	`./skew_detect.py -i image.jpg`
+	./skew_detect.py -i image.jpg
 
 To save output in a text file add `-o` option followed by the output file name:
 	
-	`./skew_detect.py -i image.jpg -o output.txt`
+	./skew_detect.py -i image.jpg -o output.txt
 
 To display output information add `-d` option followed by a string `Yes`:
 	
-	`./skew_detect.py -i image.jpg -d Yes`
+	./skew_detect.py -i image.jpg -d Yes
 
 To batch process files in a directory, use `-b` option followed by the path to directory:
 	
-	`./skew_detect.py  -b examples`
+	./skew_detect.py  -b examples
 
 To display Hough Transform plot for an image,:
 	
-	`./skew_detect.py -i image.jpg -p Yes`
+	./skew_detect.py -i image.jpg -p Yes
+
+#####Output of the Hough Transform:
+
+<img src="hough.jpg" width="400px">	
 
 To set the value of sigma for Gaussian blurring in Canny Edge Detection,  use `-s` option followed by the desired value:
 	
-	`./skew_detect.py -i image.jpg -s 3`
+	./skew_detect.py -i image.jpg -s 3
 
 To set the number of peaks collected from Hough Transform, use `-n` option followed by the desired value:
 
-	`./skew_detect.py -i image.jpg -n 10`
+	./skew_detect.py -i image.jpg -n 10
 
 ###Image Deskew using deskew.py
 
 To perform a simple deskew and display the output:
 	
-	`./deskew.py -i image.jpg -d Yes`
+	./deskew.py -i image.jpg -d Yes
 
 To save the deskewed image, use the following:
 
-	`./deskew.py -i image.jpg -o rotated.jpg`
+	./deskew.py -i image.jpg -o rotated.jpg
 
 In some cases the result image might be upside down or the text may be running vertical, To fix this, use `-r` followed by the desired angle in `int`:
 	
-	`./deskew.py -i image.jpg -o rotated.jpg -r 90`
+	./deskew.py -i image.jpg -o rotated.jpg -r 90
 
 To generate data for experimental purposes, run the test_img_gen.py in test_data folder. This will generate images containing a white line having angle between 0 to 180 degrees.
