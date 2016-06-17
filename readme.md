@@ -2,14 +2,10 @@
 
 ## Skew detection and correction in images containing text
 
-######Image with skew:
-
-<img src="/examples/4.jpg" width=400px>
-
-######Image after deskew:
-
-<img src="sample_output.jpg" height=300px>
-
+<img src="/examples/4.jpg" width=400px></img>
+<h5>Image with skew</h5><br/>
+<img src="sample_output.jpg" height=300px><
+<h5>Image after deskew</h5>
 ###Requires
 
 * `numpy`
