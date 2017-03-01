@@ -1,15 +1,17 @@
 """ Setup script for installing Alyn """
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name="alyn",
-    version="0.1.0",
+    version="0.1.1",
     author="Kakul Chandra",
+    description="Fix skew in images",
     author_email="kakulchandra911@gmail.com",
     url='https://github.com/kakul/Alyn.git',
     download_url='https://github.com',
     keywords=['image-processing', 'image-deskew', 'deskew', 'rotate', 'text'],
     packages=['alyn'],
-    install_requires=['numpy', 'matplotlib', 'scipy', 'scikit-image'],
-    classifiers=[])
+    classifiers=[],
+    license='MIT',
+    install_requires=['numpy', 'scikit-image', 'scipy', 'matplotlib'])
