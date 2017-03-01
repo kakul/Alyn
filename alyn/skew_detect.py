@@ -11,7 +11,7 @@ from skimage.color import rgb2gray
 from skimage.transform import hough_line, hough_line_peaks
 
 
-class Skew:
+class SkewDetect:
 
     piby4 = np.pi / 4
 
@@ -82,7 +82,7 @@ class Skew:
     def calculate_deviation(self, angle):
 
         angle_in_degrees = np.abs(angle)
-        deviation = np.abs(Skew.piby4 - angle_in_degrees)
+        deviation = np.abs(SkewDetect.piby4 - angle_in_degrees)
 
         return deviation
 
@@ -266,7 +266,7 @@ if __name__ == '__main__':
         help='Sigma for Canny Edge Detection',
         type=float)
     options, args = parser.parse_args()
-    skew_obj = Skew(
+    skew_obj = SkewDetect(
         options.input_file,
         options.batch_path,
         options.output_file,
