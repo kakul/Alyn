@@ -1,5 +1,9 @@
 # Alyn
 
+[![PyPI version](https://badge.fury.io/py/alyn.svg)](https://badge.fury.io/py/alyn)
+
+Documentation coming soon for PyPI version!
+
 ## Skew detection and correction in images containing text
 
 <img src="/examples/4.jpg" width=400px></img>
