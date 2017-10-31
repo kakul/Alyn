@@ -22,7 +22,7 @@ class Deskew:
 
         img = io.imread(self.input_file)
         res = self.skew_obj.process_single_file()
-        angle = res['Estimated Angle']
+        angle = res.get('Estimated Angle', 0)
 
         if angle >= 0 and angle <= 90:
             rot_angle = angle - 90 + self.r_angle
