@@ -1,6 +1,7 @@
 # Alyn
 
 [![PyPI version](https://badge.fury.io/py/alyn.svg)](https://badge.fury.io/py/alyn)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkakul%2FAlyn.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkakul%2FAlyn?ref=badge_shield)
 
 ## Skew detection and correction in images containing text
 
@@ -135,3 +136,7 @@ In some cases the result image might be upside down or the text may be running v
 	./deskew.py -i image.jpg -o rotated.jpg -r 90
 
 To generate data for experimental purposes, run the test_img_gen.py in test_data folder. This will generate images containing a white line having angle between 0 to 180 degrees.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkakul%2FAlyn.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkakul%2FAlyn?ref=badge_large)
