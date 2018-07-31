@@ -77,7 +77,7 @@ class SkewDetect:
     def display(self, data):
 
         for i in data:
-            print i + ": " + str(data[i])
+            print(i + ": " + str(data[i]))
 
     def calculate_deviation(self, angle):
 
@@ -104,7 +104,7 @@ class SkewDetect:
             if self.batch_path:
                 self.batch_process()
             else:
-                print "Invalid input, nothing to process."
+                print("Invalid input, nothing to process.")
         else:
             self.process_single_file()
 
