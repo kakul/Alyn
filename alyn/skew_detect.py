@@ -77,7 +77,7 @@ class SkewDetect:
     def display(self, data):
 
         for i in data:
-            print i + ": " + str(data[i])
+            print(i + ": " + str(data[i]))
 
     def calculate_deviation(self, angle):
 
@@ -104,7 +104,7 @@ class SkewDetect:
             if self.batch_path:
                 self.batch_process()
             else:
-                print "Invalid input, nothing to process."
+                print("Invalid input, nothing to process.")
         else:
             self.process_single_file()
 
@@ -156,7 +156,7 @@ class SkewDetect:
 
     def determine_skew(self, img_file):
 
-        img = io.imread(img_file, as_grey=True)
+        img = io.imread(img_file, as_gray=True)
         edges = canny(img, sigma=self.sigma)
         h, a, d = hough_line(edges)
         _, ap, _ = hough_line_peaks(h, a, d, num_peaks=self.num_peaks)
